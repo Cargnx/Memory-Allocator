@@ -119,7 +119,7 @@ int main()
 
     pool_init(&pool);
 
-    int *nums2 = (int *)pool_alloc(&pool, sizeof(int) * 10);
+    int *nums2 = (int *)pool_alloc(&pool, sizeof(int) * 90);
     if (nums2 != NULL)
     {
         for (int i = 0; i < 5; ++i)
