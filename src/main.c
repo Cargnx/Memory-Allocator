@@ -81,17 +81,17 @@ void pool_free(MemoryPool *pool, void *ptr)
             pool->blocks[i].is_free = true;
             pool->used_memory -= pool->blocks[i].size;
 
-            printf("Freed %zu Bytes!\n", pool->blocks[i].size);
+            printf("Freed %zu Bytes!\n\n", pool->blocks[i].size);
             return;
         }
     }
 
-    fprintf(stderr, "Warning: Attempted to free invalid pointer!\n");
+    fprintf(stderr, "Warning: Attempted to free invalid pointer!\n\n");
 }
 
 int main()
 {
-    printf("=== MEMORY ALLOCATOR ===\n");
+    printf("=== MEMORY ALLOCATOR ===\n\n");
     MemoryPool pool;
 
     pool_init(&pool);
@@ -104,22 +104,22 @@ int main()
             nums[i] = i * 10;
         }
 
-        printf("Stored numbers: \n");
+        printf("Stored numbers: ");
         for (int i = 0; i < 5; ++i)
         {
             printf("%d ", nums[i]);
         }
-        printf("\n");
+        printf("\n\n");
     }
 
-    printf("FREEING...\n");
+    printf("FREEING...\n\n");
     pool_free(&pool, nums);
 
-    printf("=== NEW ALLOCATION ===\n");
+    printf("=== NEW ALLOCATION ===\n\n");
 
     pool_init(&pool);
 
-    int *nums2 = (int *)pool_alloc(&pool, sizeof(int) * 90);
+    int *nums2 = (int *)pool_alloc(&pool, sizeof(int) * 9);
     if (nums2 != NULL)
     {
         for (int i = 0; i < 5; ++i)
@@ -132,7 +132,7 @@ int main()
         {
             printf("%d ", nums2[i]);
         }
-        printf("\n");
+        printf("\n\n");
     }
 
     printf("FREEING...\n");
