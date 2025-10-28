@@ -12,7 +12,6 @@ typedef struct
     size_t size;
     bool is_free;
     void *data;
-    void TEST;
 } Block;
 
 typedef struct
