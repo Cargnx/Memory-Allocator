@@ -8,6 +8,8 @@ int main()
 
     pool_init(&pool);
 
+    pool_stats(&pool);
+
     int *nums = (int *)pool_alloc(&pool, sizeof(int) * 5);
     if (nums != NULL)
     {
@@ -26,6 +28,8 @@ int main()
 
     printf("FREEING...\n\n");
     pool_free(&pool, nums);
+
+    pool_stats(&pool);
 
     printf("=== NEW ALLOCATION ===\n\n");
 
@@ -47,8 +51,12 @@ int main()
         printf("\n\n");
     }
 
+    pool_stats(&pool);
+
     printf("FREEING...\n");
     pool_free(&pool, nums2);
+
+    pool_stats(&pool);
 
     return 0;
 }
