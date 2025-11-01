@@ -69,3 +69,22 @@ void pool_free(MemoryPool *pool, void *ptr)
 
     fprintf(stderr, "Warning: Attempted to free invalid pointer!\n\n");
 }
+
+void pool_stats(MemoryPool *pool)
+{
+    printf("\n=== Memory Pool Statistics === \n");
+    printf("Total pool size: %d\n", POOL_SIZE);
+    printf("Used memory: %zu\n", pool->used_memory);
+    printf("Free memory: %zu\n", POOL_SIZE - pool->used_memory);
+    printf("Number of active blocks: %d\n", pool->num_blocks);
+
+    for (int i = 0; i < pool->num_blocks; ++i)
+    {
+        printf("Block: %d\n", i);
+        printf("Block size: %zu\n", pool->blocks[i].size);
+
+        printf("Status: %s\n", pool->blocks[i].is_free ? "FREE" : "USED");
+    }
+
+    printf("==============================\n\n");
+}

@@ -25,5 +25,6 @@ typedef struct
 void pool_init(MemoryPool *pool);
 void *pool_alloc(MemoryPool *pool, size_t size);
 void pool_free(MemoryPool *pool, void *ptr);
+void pool_stats(MemoryPool* pool);
 
 #endif
