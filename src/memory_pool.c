@@ -31,6 +31,20 @@ void *pool_alloc(MemoryPool *pool, size_t size)
         return NULL;
     }
 
+    for (int i = 0; i < pool->num_blocks; ++i)
+    {
+        // Check if there's a reusable block
+        if (pool->blocks[i].is_free && pool->blocks[i].size >= size)
+        {
+            // Modify the block as used and return it
+            pool->blocks[i].is_free = false;
+            pool->used_memory += pool->blocks[i].size;
+            printf("Reused block %d (%zu bytes)\n", i, pool->blocks[i].size);
+
+            return pool->blocks[i].data;
+        }
+    }
+
     void *ptr = &pool->memory[pool->used_memory];
 
     Block *block = &pool->blocks[pool->num_blocks];
