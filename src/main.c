@@ -26,6 +26,7 @@ int main()
         printf("\n\n");
     }
 
+    pool_stats(&pool);
     printf("FREEING...\n\n");
     pool_free(&pool, nums);
 
