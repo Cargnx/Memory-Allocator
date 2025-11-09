@@ -1,7 +1,7 @@
 #include <stdio.h>
 #include "memory_pool.h"
 
-// Helper: Allocates array of integers
+// Helper: Allocates array of integers 
 int *alloc_ints(MemoryPool *pool, int count)
 {
     return (int *)pool_alloc(pool, sizeof(int) * count);
